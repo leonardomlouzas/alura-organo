@@ -5,7 +5,7 @@ import TextField from "../TextField";
 import "./Form.css"
 
 
-const Form = () => {
+const Form = (props) => {
     const times = [
         'Programação',
         'Front-end',
@@ -25,8 +25,7 @@ const Form = () => {
 
     const toSubmit = (event) => {
         event.preventDefault();
-        console.log('Cadastrado com sucesso!');
-        console.log(nome, cargo, imagem, time);
+        props.onNewEmployee({ nome, cargo, imagem, time });
     }
 
     return (
