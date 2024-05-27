@@ -6,16 +6,6 @@ import "./Form.css"
 
 
 const Form = (props) => {
-    const times = [
-        'Programação',
-        'Front-end',
-        'Data Science',
-        'Devops',
-        'UX e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
-
     const [nome, setNome] = useState("");
     const [cargo, setCargo] = useState("");
     const [imagem, setImagem] = useState("");
@@ -55,7 +45,7 @@ const Form = (props) => {
                 <DropDown
                     isRequired={true}
                     label="Time"
-                    itens={times}
+                    itens={props.teams}
                     value={time}
                     onChange={value => setTime(value)}
                 />

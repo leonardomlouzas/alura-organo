@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Form onNewEmployee={colaborador => addNewEmployee(colaborador)} />
+      <Form teams={times.map(team => team.name)} onNewEmployee={colaborador => addNewEmployee(colaborador)} />
       {times.map(team => <Team name={team.name} key={team.name} primaryColor={team.primaryColor} secondaryColor={team.secondaryColor} />)}
     </div>
   );
