@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Banner from './componentes/Banner';
 import Form from './componentes/Form';
 import Team from './componentes/Team';
+import Footer from './componentes/Footer';
 
 function App() {
   const times = [
@@ -45,14 +46,20 @@ function App() {
 
   const addNewEmployee = (colaborador) => {
     setColaboradores([...colaboradores, colaborador]);
-    console.log(colaboradores);
   };
 
   return (
     <div className="App">
       <Banner />
       <Form teams={times.map(team => team.name)} onNewEmployee={colaborador => addNewEmployee(colaborador)} />
-      {times.map(team => <Team name={team.name} key={team.name} primaryColor={team.primaryColor} secondaryColor={team.secondaryColor} />)}
+      {times.map(team => <Team
+        name={team.name}
+        key={team.name}
+        primaryColor={team.primaryColor}
+        secondaryColor={team.secondaryColor}
+        employees={colaboradores.filter(colaborador => colaborador.time === team.name)} />)
+      }
+      <Footer />
     </div>
   );
 }

@@ -9,3 +9,11 @@
   display: inline-block;
   padding-bottom: 8px;
 }
+
+.team .employees {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  gap: 32px;
+}

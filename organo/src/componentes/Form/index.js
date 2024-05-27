@@ -16,6 +16,10 @@ const Form = (props) => {
     const toSubmit = (event) => {
         event.preventDefault();
         props.onNewEmployee({ nome, cargo, imagem, time });
+        setNome("");
+        setCargo("");
+        setImagem("");
+        setTime("");
     }
 
     return (
