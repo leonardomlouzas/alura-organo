@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Button from "../Button";
 import DropDown from "../DropDown";
-import TextField from "../TextField";
+import Field from "../Field";
 import "./Form.css"
 
 
@@ -10,7 +10,8 @@ const Form = (props) => {
     const [cargo, setCargo] = useState("");
     const [imagem, setImagem] = useState("");
     const [time, setTime] = useState("");
-
+    const [nomeTime, setNomeTime] = useState("");
+    const [corTime, setCorTime] = useState("");
 
 
     const toSubmit = (event) => {
@@ -26,21 +27,21 @@ const Form = (props) => {
         <section className="form">
             <form onSubmit={toSubmit}>
                 <h2>Preencha os dados para criar o card do colaborador.</h2>
-                <TextField
+                <Field
                     isRequired={true}
                     label="Nome"
                     placeholder="Digite seu nome"
                     value={nome}
                     onChange={value => setNome(value)}
                 />
-                <TextField
+                <Field
                     isRequired={true}
                     label="Cargo"
                     placeholder="Digite seu cargo"
                     value={cargo}
                     onChange={value => setCargo(value)}
                 />
-                <TextField
+                <Field
                     label="Imagem"
                     placeholder="Digite o endereço da imagem"
                     value={imagem}
@@ -54,6 +55,25 @@ const Form = (props) => {
                     onChange={value => setTime(value)}
                 />
                 <Button texto="Criar Card" />
+            </form>
+            <form onSubmit={e => { e.preventDefault(); props.onNewTeam({ name: nomeTime, color: corTime }) }}>
+                <h2>Preencha os dados para criar um novo time.</h2>
+                <Field
+                    isRequired
+                    label="Nome"
+                    placeholder="Digite o nome do time"
+                    value={nomeTime}
+                    onChange={value => setNomeTime(value)}
+                />
+                <Field
+                    isRequired={true}
+                    label="Cor"
+                    placeholder="Digite a cor do time"
+                    value={corTime}
+                    type="color"
+                    onChange={value => setCorTime(value)}
+                />
+                <Button texto="Criar um novo time" />
             </form>
         </section>
     )
