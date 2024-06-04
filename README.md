@@ -19,7 +19,7 @@ Repositorio Base para desenvolvimento do projeto Organo da trilha Front End ONE
 json-server --watch products.json -p 8000
 ```
 
-2. Em outro terminal, ative a aplicação
+2. Acesse o [site](https://alura-organo-njcswja1o-leonardo-moreira-louzas-projects.vercel.app/) ou ative a aplicação
 
 ```
 npm start
