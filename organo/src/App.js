@@ -14,7 +14,7 @@ function App() {
     },
     {
       id: uuidv4(),
-      name: "Front-end",
+      name: "Front-End",
       color: "#82cffa",
     },
     {
@@ -85,11 +85,22 @@ function App() {
     setTimes([...times, { ...newTeam, id: uuidv4() }])
   }
 
-  function toggleFavorite(id) {
-    setColaboradores(colaboradores.map(colaborador => {
-      if (colaborador.id === id) colaborador.isFavorite = !colaborador.isFavorite;
-      return colaborador;
-    }))
+  function toggleFavorite(id, isFavorite) {
+    fetch("http://localhost:8000/employees/" + id, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ favorito: !isFavorite })
+    })
+      .then(() => {
+        setColaboradores(colaboradores.map(colaborador => {
+          if (colaborador.id === id) {
+            colaborador.favorito = !colaborador.favorito;
+          }
+          return colaborador;
+        }))
+      })
   }
 
   return (

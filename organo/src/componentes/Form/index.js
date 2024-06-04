@@ -11,7 +11,7 @@ const Form = (props) => {
     const [imagem, setImagem] = useState("");
     const [time, setTime] = useState("");
     const [nomeTime, setNomeTime] = useState("");
-    const [corTime, setCorTime] = useState("");
+    const [corTime, setCorTime] = useState("#ffffff");
 
 
     const toSubmit = (event) => {

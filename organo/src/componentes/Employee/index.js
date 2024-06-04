@@ -3,8 +3,14 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import "./Employee.css"
 
 const Employee = ({ imagem, nome, cargo, color, id, onDelete, isFavorite, onFavorite }) => {
+    const heart_props = {
+        color: isFavorite ? "#ff0000" : "#000000",
+        size: 25,
+        onClick: favorite,
+        style: { cursor: "pointer" },
+    }
     function favorite() {
-        onFavorite(id);
+        onFavorite(id, isFavorite);
     }
 
     return (
@@ -21,7 +27,7 @@ const Employee = ({ imagem, nome, cargo, color, id, onDelete, isFavorite, onFavo
                 <h4>{nome}</h4>
                 <h5>{cargo}</h5>
                 <div className="favorite">
-                    {isFavorite ? <AiFillHeart color="#ff0000" size={25} onClick={favorite} /> : <AiOutlineHeart color="#000000" size={25} onClick={favorite} />}
+                    {isFavorite ? <AiFillHeart {...heart_props} /> : <AiOutlineHeart {...heart_props} />}
                 </div>
             </div>
         </div>

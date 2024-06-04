@@ -18,7 +18,7 @@ const Team = (props) => {
                             key={employee.nome}
                             id={employee.id}
                             onDelete={props.onDelete}
-                            onToggleFavoriteisFavorite={props.isFavorite}
+                            isFavorite={employee.favorito}
                             onFavorite={props.onFavorite}
                         />);
 
