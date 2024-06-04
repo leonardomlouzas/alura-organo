@@ -6,6 +6,8 @@ import Footer from './componentes/Footer';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
+  const url = "http://localhost:8000/employees/"
+
   const [times, setTimes] = useState([
     {
       id: uuidv4(),
@@ -47,13 +49,13 @@ function App() {
   const [colaboradores, setColaboradores] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/employees")
+    fetch(url)
       .then(r => r.json())
       .then(dados => setColaboradores(dados))
   }, [])
 
   const addNewEmployee = (colaborador) => {
-    fetch("http://localhost:8000/employees", {
+    fetch(url, {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -65,7 +67,7 @@ function App() {
   };
 
   function deleteEmployee(id) {
-    fetch("http://localhost:8000/employees/" + id, {
+    fetch(url + id, {
       method: "DELETE"
     })
       .then(() => { setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id)) }
@@ -86,7 +88,7 @@ function App() {
   }
 
   function toggleFavorite(id, isFavorite) {
-    fetch("http://localhost:8000/employees/" + id, {
+    fetch(url + id, {
       method: "PATCH",
       headers: {
         "content-type": "application/json"
